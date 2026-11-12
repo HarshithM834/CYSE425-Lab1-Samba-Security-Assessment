@@ -1,0 +1,5 @@
+# Synthetic sample for testing the defensive audit script
+Port 22
+PasswordAuthentication yes
+PermitRootLogin yes
+PubkeyAuthentication yes
