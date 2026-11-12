@@ -44,6 +44,10 @@ A gallery of **26 redacted screenshots** from the original lab report is availab
 
 *Above: root identity verification after controlled Samba exploitation.*
 
+## Original Lab 1 report (redacted)
+
+The **[16-page Lab 1 PDF report](docs/CYSE425_Lab1_Report_Redacted.pdf)** is included for reviewers who want the original course-lab write-up and screenshots in their original page layout. Credential-bearing screenshot regions are masked for public distribution. For a more navigable version, see the [26-image evidence gallery](docs/evidence-gallery.md).
+
 ## Findings and evidence
 
 | Finding | Evidence from lab write-up | Security impact | Recommended control |
@@ -84,6 +88,7 @@ The example intentionally has insecure settings. The auditor exits with code 1 w
 .
 ├── README.md
 ├── docs/
+│   ├── CYSE425_Lab1_Report_Redacted.pdf  # 16-page sanitized lab report
 │   ├── evidence-gallery.md    # Screenshot gallery with captions
 │   ├── assessment.md          # Lab stages, results, and references to report pages
 │   ├── remediation.md         # Practical defensive lessons
