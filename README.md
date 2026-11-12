@@ -1,10 +1,11 @@
 # Samba Security Assessment: CVE-2017-7494
 
-![Security](https://img.shields.io/badge/domain-offensive%20security-202b3b) ![Environment](https://img.shields.io/badge/environment-authorized%20lab-20835c) ![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab)
+![Security](https://img.shields.io/badge/domain-offensive%20security-202b3b) ![Environment](https://img.shields.io/badge/environment-authorized%20lab-20835c)
 
-An **authorized, isolated-lab security assessment** documenting a vulnerable Samba service, the impact of initial remote code execution, credential exposure, persistence risks, and cleanup. The project includes an original **read-only SSH configuration auditor** as a defensive companion utility.
+An authorized penetration-testing lab documenting the exploitation of a vulnerable **Samba service (CVE-2017-7494)**, validation of root-level access, SSH authentication changes, controlled account-file transfer, password recovery testing, and post-assessment cleanup using Kali Linux.
 
-> This repository is a case study of a completed class exercise, not a deployable exploitation framework. It does not include exploit payloads, captured credentials, password hashes, reverse shells, or live target addresses.
+**Tools:** Metasploit Framework · Kali Linux · SSH · Netcat · John the Ripper  
+**Lab report:** [View the 16-page redacted PDF](docs/CYSE425_Lab1_Report_Redacted.pdf)
 
 ## At a glance
 
@@ -14,39 +15,130 @@ An **authorized, isolated-lab security assessment** documenting a vulnerable Sam
 | Environment | Kali Linux and a deliberately vulnerable Linux/Samba lab target |
 | Tools used in the documented exercise | Metasploit Framework, SSH, Netcat, John the Ripper |
 | Outcome documented | A command shell and root privileges; authorized SSH access testing; test-account password recovery; cleanup |
-| Added portfolio utility | Python **read-only SSH configuration checker** with unit tests |
 
-## Assessment workflow
+## Assessment Workflow
 
-![Assessment flow](assets/assessment-flow.svg)
+![Samba vulnerability assessment workflow](assets/assessment-flow.svg)
 
-```mermaid
-flowchart TD
-    A[Authorized lab scope] --> B[Identify Samba CVE-2017-7494 module]
-    B --> C[Validate initial shell / root access]
-    C --> D[Inspect SSH authentication exposure]
-    D --> E[Review authorized test-account file transfer]
-    E --> F[Assess weak password hashes]
-    F --> G[Validate impact in lab]
-    G --> H[Remove test artifacts and restore settings]
-    H --> I[Document remediation]
-```
+## Evidence Screenshots
 
-## Visual walkthrough
+All **26 screenshots** from the authorized Lab 1 report are shown below, in chronological order. Sensitive password and account-data regions are redacted.
 
-A gallery of **26 redacted screenshots** from the original lab report is available in the **[Evidence Gallery](docs/evidence-gallery.md)**, including exploitation, post-exploitation, credential testing, and cleanup.
+### Discovery and initial compromise
 
-[![Samba module and authorized target configuration](assets/evidence/04.webp)](docs/evidence-gallery.md)
+**01. CVE-2017-7494 research and Kali lab environment**
 
-*Above: Metasploit module configuration used in the authorized lab. Click for the full evidence gallery.*
+![01 — CVE-2017-7494 research and Kali lab environment](assets/evidence/01.webp)
 
-[![Successful shell and privilege verification](assets/evidence/06.webp)](docs/evidence-gallery.md)
+**02. Metasploit database initialization and console launch**
 
-*Above: root identity verification after controlled Samba exploitation.*
+![02 — Metasploit database initialization and console launch](assets/evidence/02.webp)
 
-## Original Lab 1 report (redacted)
+**03. Identification of the Samba is_known_pipename module**
 
-The **[16-page Lab 1 PDF report](docs/CYSE425_Lab1_Report_Redacted.pdf)** is included for reviewers who want the original course-lab write-up and screenshots in their original page layout. Credential-bearing screenshot regions are masked for public distribution. For a more navigable version, see the [26-image evidence gallery](docs/evidence-gallery.md).
+![03 — Identification of the Samba is_known_pipename module](assets/evidence/03.webp)
+
+**04. Exploit configuration for the authorized lab target**
+
+![04 — Exploit configuration for the authorized lab target](assets/evidence/04.webp)
+
+**05. Command-shell session established**
+
+![05 — Command-shell session established](assets/evidence/05.webp)
+
+**06. Root identity verified from the shell**
+
+![06 — Root identity verified from the shell](assets/evidence/06.webp)
+
+### SSH exposure analysis
+
+**07. Inspection of SSH server configuration**
+
+![07 — Inspection of SSH server configuration](assets/evidence/07.webp)
+
+**08. Password-authentication configuration review**
+
+![08 — Password-authentication configuration review](assets/evidence/08.webp)
+
+**09. SSH daemon directive inspection**
+
+![09 — SSH daemon directive inspection](assets/evidence/09.webp)
+
+**10. Review of SSH service options and included configuration**
+
+![10 — Review of SSH service options and included configuration](assets/evidence/10.webp)
+
+### Controlled SSH access changes
+
+**11. Preparing a lab-only SSH configuration override**
+
+![11 — Preparing a lab-only SSH configuration override](assets/evidence/11.webp)
+
+**12. Temporary HTTP server for configuration transfer**
+
+![12 — Temporary HTTP server for configuration transfer](assets/evidence/12.webp)
+
+**13. Applying lab SSH configuration and restarting SSH**
+
+![13 — Applying lab SSH configuration and restarting SSH](assets/evidence/13.webp)
+
+**14. Temporary lab account creation and privilege assignment**
+
+![14 — Temporary lab account creation and privilege assignment](assets/evidence/14.webp)
+
+**15. Successful SSH authentication for the test account**
+
+![15 — Successful SSH authentication for the test account](assets/evidence/15.webp)
+
+**16. Sudo privilege testing through the SSH session**
+
+![16 — Sudo privilege testing through the SSH session](assets/evidence/16.webp)
+
+### Account-file exposure
+
+**17. Authorized copies of account data**
+
+![17 — Authorized copies of account data](assets/evidence/17.webp)
+
+**18. Controlled transfer of account files to Kali**
+
+![18 — Controlled transfer of account files to Kali](assets/evidence/18.webp)
+
+**19. Preparation of combined test password hashes**
+
+![19 — Preparation of combined test password hashes](assets/evidence/19.webp)
+
+### Password recovery and access impact
+
+**20. John the Ripper password-strength assessment**
+
+![20 — John the Ripper password-strength assessment](assets/evidence/20.webp)
+
+**21. Verified password recovery results with sensitive values redacted**
+
+![21 — Verified password recovery results with sensitive values redacted](assets/evidence/21.webp)
+
+**22. Recovered test-account SSH login**
+
+![22 — Recovered test-account SSH login](assets/evidence/22.webp)
+
+**23. Recovered account privilege and identity validation**
+
+![23 — Recovered account privilege and identity validation](assets/evidence/23.webp)
+
+**24. Follow-up SSH and administrative test**
+
+![24 — Follow-up SSH and administrative test](assets/evidence/24.webp)
+
+### Remote-shell validation and cleanup
+
+**25. Controlled Netcat reverse-shell validation**
+
+![25 — Controlled Netcat reverse-shell validation](assets/evidence/25.webp)
+
+**26. Post-test cleanup and restoration**
+
+![26 — Post-test cleanup and restoration](assets/evidence/26.webp)
 
 ## Findings and evidence
 
@@ -60,70 +152,9 @@ The **[16-page Lab 1 PDF report](docs/CYSE425_Lab1_Report_Redacted.pdf)** is inc
 | Remote access validation | A controlled reverse-shell connection was demonstrated | Evidence of ability to operate remotely from compromised host | Outbound network restrictions and alerting |
 | Post-test cleanup | Temporary account, SSH configuration changes, and test artifact were removed | Helps restore the deliberately modified lab environment | Verify changes are reverted and conduct post-test review |
 
-**Evidence attribution:** Findings and outcomes above come from the supplied 16-page *CYSE 425 - Lab 1* report. See [docs/assessment.md](docs/assessment.md) for a page-indexed narrative. No attempt was made to independently reproduce the attack in this repository.
-
-## Defensive companion: SSH configuration audit
-
-A local, **read-only** script highlights SSH directives that can increase risk. It does **not** edit configuration, start a service, connect to hosts, or exploit vulnerabilities. Its checks are intentionally narrow: they are best-effort static checks, **not** an equivalent of `sshd -T` or an OS hardening audit.
-
-```bash
-python3 scripts/ssh_config_audit.py examples/sshd_config.sample
-python3 -m unittest discover -s tests -v
-```
-
-Example output:
-
-```text
-SSH configuration review: examples/sshd_config.sample
-[WARN] PasswordAuthentication yes (line 3)
-[WARN] PermitRootLogin yes (line 4)
-[INFO] Static file check only; Match/Include contexts not fully evaluated.
-```
-
-The example intentionally has insecure settings. The auditor exits with code 1 when it finds warnings.
-
-### Project structure
-
-```text
-.
-├── README.md
-├── docs/
-│   ├── CYSE425_Lab1_Report_Redacted.pdf  # 16-page sanitized lab report
-│   ├── evidence-gallery.md    # Screenshot gallery with captions
-│   ├── assessment.md          # Lab stages, results, and references to report pages
-│   ├── remediation.md         # Practical defensive lessons
-│   └── responsible-use.md     # Public artifact and authorization boundaries
-├── examples/
-│   └── sshd_config.sample     # Synthetic example; not taken from the target
-├── scripts/
-│   └── ssh_config_audit.py    # Original read-only companion script
-├── tests/
-│   └── test_ssh_config_audit.py
-├── assets/
-│   ├── assessment-flow.svg    # Assessment workflow diagram
-│   └── evidence/              # 26 redacted lab screenshots
-└── .gitignore
-```
-
 ## What this project demonstrates
 
 - Understanding of the exploitation-to-impact lifecycle in a controlled environment.
 - Practical familiarity with Linux privilege context, SSH authentication configuration, and file permissions.
 - Awareness of the relationship between host compromise and credential compromise.
 - Ability to document evidence, propose remediations, and remove test artifacts.
-- Small-scale defensive Python scripting and automated testing.
-
-## Important limitations
-
-- The original report is a **lab narrative**, not a full commercial penetration test. It does not establish patch-version evidence, exhaustive network scope, formal CVSS scoring, or remediation verification.
-- The extracted findings are limited to what the report actually documents.
-- The audit script is an **additional portfolio tool created from this case study**. It is not represented as code run in the original lab.
-- Selected **redacted** screenshots are published in the [evidence gallery](docs/evidence-gallery.md). Raw account files, password hashes, captured credentials, and the unredacted report remain excluded.
-
-## Source & attribution
-
-Course: **CYSE 425** — Lab 1. Report author: Harshith Motipalli. The supporting analysis is an adapted summary of the supplied lab report.
-
-## Responsible use
-
-Perform security testing only on systems you own or have explicit permission to test. See [docs/responsible-use.md](docs/responsible-use.md).
