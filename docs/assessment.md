@@ -48,4 +48,4 @@ The report states that the temporary lab account, modified SSH configuration fil
 
 ## Evidence policy
 
-The source PDF includes detailed terminal screenshots. Those screenshots may expose sensitive details and are therefore **not redistributed** as part of this public-ready starter. Add carefully reviewed/redacted screenshots later under `assets/evidence/` only when you can confirm that no credentials, hashes, personal data, IP addresses requiring confidentiality, or other secrets remain.
+The source PDF includes detailed terminal screenshots. The selected and redacted versions are published in [the evidence gallery](evidence-gallery.md). The unredacted original, raw authentication files, plaintext passwords, and password hashes are intentionally excluded.

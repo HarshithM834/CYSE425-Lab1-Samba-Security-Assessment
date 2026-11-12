@@ -32,6 +32,18 @@ flowchart TD
     H --> I[Document remediation]
 ```
 
+## Visual walkthrough
+
+A gallery of **26 redacted screenshots** from the original lab report is available in the **[Evidence Gallery](docs/evidence-gallery.md)**, including exploitation, post-exploitation, credential testing, and cleanup.
+
+[![Samba module and authorized target configuration](assets/evidence/04.webp)](docs/evidence-gallery.md)
+
+*Above: Metasploit module configuration used in the authorized lab. Click for the full evidence gallery.*
+
+[![Successful shell and privilege verification](assets/evidence/06.webp)](docs/evidence-gallery.md)
+
+*Above: root identity verification after controlled Samba exploitation.*
+
 ## Findings and evidence
 
 | Finding | Evidence from lab write-up | Security impact | Recommended control |
@@ -72,6 +84,7 @@ The example intentionally has insecure settings. The auditor exits with code 1 w
 .
 ├── README.md
 ├── docs/
+│   ├── evidence-gallery.md    # Screenshot gallery with captions
 │   ├── assessment.md          # Lab stages, results, and references to report pages
 │   ├── remediation.md         # Practical defensive lessons
 │   └── responsible-use.md     # Public artifact and authorization boundaries
@@ -82,7 +95,8 @@ The example intentionally has insecure settings. The auditor exits with code 1 w
 ├── tests/
 │   └── test_ssh_config_audit.py
 ├── assets/
-│   └── assessment-flow.svg    # Diagram of the documented workflow
+│   ├── assessment-flow.svg    # Assessment workflow diagram
+│   └── evidence/              # 26 redacted lab screenshots
 └── .gitignore
 ```
 
@@ -99,7 +113,7 @@ The example intentionally has insecure settings. The auditor exits with code 1 w
 - The original report is a **lab narrative**, not a full commercial penetration test. It does not establish patch-version evidence, exhaustive network scope, formal CVSS scoring, or remediation verification.
 - The extracted findings are limited to what the report actually documents.
 - The audit script is an **additional portfolio tool created from this case study**. It is not represented as code run in the original lab.
-- Screenshots, account files, packet captures and raw report PDFs have intentionally **not** been published pending a manual privacy and security review.
+- Selected **redacted** screenshots are published in the [evidence gallery](docs/evidence-gallery.md). Raw account files, password hashes, captured credentials, and the unredacted report remain excluded.
 
 ## Source & attribution
 
