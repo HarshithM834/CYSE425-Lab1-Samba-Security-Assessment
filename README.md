@@ -1,4 +1,4 @@
-# Samba Security Assessment: CVE-2017-7494
+# CYSE 425 — Lab 1: Samba Security Assessment: CVE-2017-7494
 
 ![Security](https://img.shields.io/badge/domain-offensive%20security-202b3b) ![Environment](https://img.shields.io/badge/environment-authorized%20lab-20835c)
 
